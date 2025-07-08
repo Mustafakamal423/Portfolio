@@ -35,16 +35,16 @@ export const Navbar = () => {
           href="#hero"
         >
           <span className="relative z-10">
-            <span className="text-glow text-foreground">Mustafa</span>
+            <span className="text-glow text-foreground text-red-500">Mustafa</span>
             {""}
             Portfolio
           </span>
 
-          <img
+          {/* <img
             src="me2.png"
             alt="Mustafa's Photo"
             className="mt-2 ml-2 w-25 h-25 rounded-full object-cover"
-          />
+          /> */}
         </a>
         {/**desktop nav */}
         <div className="hidden md:flex space-x-8">
