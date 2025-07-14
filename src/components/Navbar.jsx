@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+
 const navItems = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
@@ -10,62 +11,49 @@ const navItems = [
 ];
 
 export const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <nav
-      className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
-      )}
-    >
+    <nav className="w-full py-5 bg-background text-white">
       <div className="container flex items-center justify-between">
+        {/* Logo & Image */}
         <a
-          className="text-xl font-bold text-primary flex items-center"
           href="#hero"
+          className="flex flex-col items-center space-y-2 text-xl font-bold text-primary"
         >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground text-red-500">Mustafa</span>
-            {""}
-            Portfolio
+          <span className="text-black dark:text-white text-glow">
+            Mustafa <span className="text-primary">Portfolio</span>
           </span>
-
-          {/* <img
+          <img
             src="me2.png"
-            alt="Mustafa's Photo"
-            className="mt-2 ml-2 w-25 h-25 rounded-full object-cover"
-          /> */}
+            alt="Mustafa Kamal"
+            className="w-28 h-29 rounded-full border-2 border-primary shadow-md"
+          />
         </a>
-        {/**desktop nav */}
+
+        {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8">
           {navItems.map((item, key) => (
             <a
               key={key}
               href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              className="text-white hover:text-primary transition-colors duration-300"
             >
               {item.name}
             </a>
           ))}
         </div>
-        {/**mobile nav */}
+
+        {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
-          araia-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          className="md:hidden p-2 text-white z-50"
+          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
+
+        {/* Mobile Menu Panel */}
         <div
           className={cn(
             "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
@@ -80,7 +68,7 @@ export const Navbar = () => {
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                className="text-white hover:text-primary transition-colors duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

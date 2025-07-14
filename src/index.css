@@ -11,6 +11,11 @@
     --primary: 250 47% 60%;
     --primary-foreground: 210 40% 98%;
     --border: 214 32% 91%;
+    --color-border: hsl(var(--border));
+    --color-background: hsl(var(--background));
+    --color-foreground: hsl(var(--foreground));
+    --color-primary-foreground: hsl(var(--primary-foreground));
+    --color-card: hsl(var(--card));
 
     --animate-float: float 6s ease-in-out infinite;
     --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
@@ -40,17 +45,15 @@
   }
 
   body {
-    @apply transition-colors duration-300;
+    @apply transition-colors duration-300 text-black dark:text-white;
     background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
+    /* ❌ REMOVE this ↓ */
+    /* color: hsl(var(--foreground)); */
   }
 
-  #root {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0;
-    text-align: center;
+  :root {
+    --foreground: 222 47% 5%; /* changed from 11% to 5% for better contrast */
   }
 }
 
@@ -145,7 +148,6 @@
 
 /* Keyframes for animations */
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0);
@@ -157,7 +159,6 @@
 }
 
 @keyframes pulse-subtle {
-
   0%,
   100% {
     opacity: 1;
