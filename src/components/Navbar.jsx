@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -14,12 +14,12 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full py-5 bg-background text-white">
+    <nav className="w-full py-5 bg-background text-black dark:text-white">
       <div className="container flex items-center justify-between">
         {/* Logo & Image */}
         <a
           href="#hero"
-          className="flex flex-col items-center space-y-2 text-xl font-bold text-primary"
+          className="flex flex-col items-center space-y-2 text-xl font-bold"
         >
           <span className="text-black dark:text-white text-glow">
             Mustafa <span className="text-primary">Portfolio</span>
@@ -37,7 +37,7 @@ export const Navbar = () => {
             <a
               key={key}
               href={item.href}
-              className="text-white hover:text-primary transition-colors duration-300"
+              className="text-black dark:text-white hover:text-primary transition-colors duration-300"
             >
               {item.name}
             </a>
@@ -47,7 +47,7 @@ export const Navbar = () => {
         {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-white z-50"
+          className="md:hidden p-2 text-black dark:text-white z-50"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -68,7 +68,7 @@ export const Navbar = () => {
               <a
                 key={key}
                 href={item.href}
-                className="text-white hover:text-primary transition-colors duration-300"
+                className="text-black dark:text-white hover:text-primary transition-colors duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

@@ -5,7 +5,7 @@ import path from "path";
 export default defineConfig({
   server: { historyApiFallback: true },
   plugins: [react()], // ✅ only react here
-  base: "/Portfolio/",
+  base: "/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
