@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -12,6 +12,10 @@ const navItems = [
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleTheme = () => {
+    document.documentElement.classList.toggle("dark");
+  };
 
   return (
     <nav className="w-full py-5 bg-background text-black dark:text-white">
@@ -32,7 +36,15 @@ export const Navbar = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center space-x-6">
+          <button
+            onClick={toggleTheme}
+            className="text-primary hover:text-yellow-400 transition"
+          >
+            <Sun className="h-5 w-5 dark:hidden" />
+            <Moon className="h-5 w-5 hidden dark:inline" />
+          </button>
+
           {navItems.map((item, key) => (
             <a
               key={key}
@@ -44,14 +56,26 @@ export const Navbar = () => {
           ))}
         </div>
 
-        {/* Mobile Menu Toggle Button */}
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-black dark:text-white z-50"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Menu Toggle + Theme Switch */}
+        <div className="flex flex-col items-end space-y-2 md:hidden">
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="text-primary hover:text-yellow-400 transition"
+          >
+            <Sun className="h-5 w-5 dark:hidden" />
+            <Moon className="h-5 w-5 hidden dark:inline" />
+          </button>
+
+          {/* Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="p-2 text-black dark:text-white z-50"
+            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
 
         {/* Mobile Menu Panel */}
         <div

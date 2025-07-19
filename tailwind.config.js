@@ -1,6 +1,10 @@
+// tailwind.config.js
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
+  darkMode: "class", // ✅ Manual control via .dark class
+
   theme: {
     extend: {
       colors: {
@@ -9,7 +13,7 @@ export default {
         secondary: "hsl(214, 32%, 91%)",
         foreground: "hsl(222, 47%, 11%)",
         card: "hsl(0, 0%, 100%)",
-        "muted-foreground": "hsl(214, 32%, 50%)", // example
+        "muted-foreground": "hsl(214, 32%, 50%)",
       },
       animation: {
         "fade-in": "fadeIn 1s ease-in forwards",
@@ -35,6 +39,6 @@ export default {
       },
     },
   },
+
   plugins: [],
-  darkMode: "class",
 };
