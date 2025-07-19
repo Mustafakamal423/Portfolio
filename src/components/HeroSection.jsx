@@ -29,7 +29,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Scroll Indicator with 10px margin-top */}
-        <div className="mt-16 p-10 flex flex-col items-center animate-bounce">
+        <div className="mt-13 p-10 flex flex-col items-center animate-bounce">
           <span className="text-sm text-muted-foreground mb-1">Scroll</span>
           <ArrowDown className="h-5 w-5 text-primary" />
         </div>
