@@ -3,7 +3,7 @@ import { ArrowUp } from "lucide-react";
 export const Footer = () => {
   return (
     <footer className="py-12 px-4 bg-background text-white mt-12 flex flex-wrap justify-between items-center">
-      <p className="text-sm">
+      <p className="text-sm text-black dark:text-white">
         &copy; {new Date().getFullYear()} Mustafa Kamal. All rights reserved.
       </p>
       <a

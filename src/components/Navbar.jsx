@@ -23,7 +23,7 @@ export const Navbar = () => {
         {/* Logo & Image */}
         <a
           href="#hero"
-          className="flex flex-col items-center space-y-2 text-xl font-bold"
+          className="flex items-center space-x-4 text-xl font-bold"
         >
           <span className="text-black dark:text-white text-glow">
             Mustafa <span className="text-primary">Portfolio</span>
@@ -31,7 +31,7 @@ export const Navbar = () => {
           <img
             src="me2.png"
             alt="Mustafa Kamal"
-            className="w-28 h-29 rounded-full border-2 border-primary shadow-md"
+            className="w-12 h-12 rounded-full border-2 border-black shadow-md"
           />
         </a>
 
@@ -58,7 +58,6 @@ export const Navbar = () => {
 
         {/* Mobile Menu Toggle + Theme Switch */}
         <div className="flex flex-col items-end space-y-2 md:hidden">
-          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
             className="text-primary hover:text-yellow-400 transition"
@@ -67,7 +66,6 @@ export const Navbar = () => {
             <Moon className="h-5 w-5 hidden dark:inline" />
           </button>
 
-          {/* Menu Button */}
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
             className="p-2 text-black dark:text-white z-50"

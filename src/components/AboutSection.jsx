@@ -2,7 +2,7 @@ import { Code, User, Briefcase } from "lucide-react";
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-24 px-4 relative">
+    <section id="about" className="pt-16 pb-116 px-4 relative">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl text-black dark:text-white md:text-4xl font-bold mb-12 text-center">
           About <span className="text-primary">Me</span>
