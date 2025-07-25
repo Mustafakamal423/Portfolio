@@ -1,13 +1,21 @@
 import { Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import { cn } from "../lib/utils";
 import { useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const ContactSection = () => {
-  const [isSubmiting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSent, setIsSent] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Simulate sending
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSent(true);
+    }, 1500);
   };
 
   return (
@@ -76,15 +84,26 @@ export const ContactSection = () => {
               <h4 className="font-medium text-zinc-800 dark:text-zinc-100">
                 Connect With Me
               </h4>
-              <a
-                href="https://www.linkedin.com/in/mustafa-kamal-a1a7a8243"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-black dark:text-white hover:text-primary transition-colors"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin size={32} />
-              </a>
+              <div className="flex space-x-4">
+                <a
+                  href="https://www.linkedin.com/in/mustafa-kamal-a1a7a8243"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black dark:text-white hover:text-primary transition-colors"
+                  aria-label="LinkedIn Profile"
+                >
+                  <Linkedin size={32} />
+                </a>
+                <a
+                  href="https://wa.me/251939001695"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black dark:text-white hover:text-primary transition-colors"
+                  aria-label="WhatsApp"
+                >
+                  <FaWhatsapp size={32} />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -95,7 +114,12 @@ export const ContactSection = () => {
             <h3 className="text-2xl font-semibold mb-6 text-black dark:text-white">
               Send a Message
             </h3>
-            <form className="space-y-6">
+            <form
+              action="https://formspree.io/f/mkgzjlng"
+              method="POST"
+              className="space-y-6"
+              onSubmit={handleSubmit}
+            >
               <div>
                 <label
                   htmlFor="name"
@@ -148,12 +172,16 @@ export const ContactSection = () => {
 
               <button
                 type="submit"
-                disabled={isSubmiting}
+                disabled={isSubmitting}
                 className={cn(
                   "cosmic-button w-full flex items-center justify-center gap-2"
                 )}
               >
-                {isSubmiting ? "Sending..." : "Send Message"}
+                {isSubmitting
+                  ? "Sending..."
+                  : isSent
+                  ? "Message sent! "
+                  : "Send Message"}
                 <Send size={16} />
               </button>
             </form>
